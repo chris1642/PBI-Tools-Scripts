@@ -1,0 +1,21 @@
+# Define the folder path where the .pbix files are located
+$folderPath = "C:\Path\To\Your\Folder"
+
+# Get all .pbix files from the specified folder
+$pbixFiles = Get-ChildItem -Path $folderPath -Filter *.pbix
+
+# Loop through each .pbix file and apply the pbi-tools extract command
+foreach ($file in $pbixFiles) {
+    $filePath = $file.FullName
+    Write-Host "Processing file: $filePath"
+    
+    # Run the pbi-tools extract command for each .pbix file
+    pbi-tools extract $filePath -modelSerialization Legacy
+
+    # Optionally, check for any error after the command execution
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Error occurred while processing $filePath"
+    } else {
+        Write-Host "$filePath extracted successfully"
+    }
+}

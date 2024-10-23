@@ -1,0 +1,23 @@
+# Define the parent directory where the folders are located
+$parentDirectory = "C:\PBI Tools Extracts\Reports"
+
+# Get all directories from the specified parent directory
+$folders = Get-ChildItem -Path $parentDirectory -Directory
+
+# Loop through each folder and apply the pbi-tools compile command
+foreach ($folder in $folders) {
+    $folderPath = $folder.FullName
+    $outputPath = "$parentDirectory\$($folder.Name).pbit"
+    
+    Write-Host "Compiling folder: $folderPath to $outputPath"
+    
+    # Run the pbi-tools compile command for each folder
+    pbi-tools compile $folderPath -format PBIX -outPath $outputPath
+
+    # Optionally, check for any error after the command execution
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Error occurred while compiling $folderPath"
+    } else {
+        Write-Host "$outputPath compiled successfully"
+    }
+}

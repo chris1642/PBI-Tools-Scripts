@@ -12,7 +12,7 @@ foreach ($folder in $folders) {
     Write-Host "Compiling folder: $folderPath to $outputPath"
     
     # Run the pbi-tools compile command for each folder
-    pbi-tools compile $folderPath -format PBIX -outPath $outputPath
+    pbi-tools compile $folderPath -format PBIT -outPath $outputPath
 
     # Optionally, check for any error after the command execution
     if ($LASTEXITCODE -ne 0) {

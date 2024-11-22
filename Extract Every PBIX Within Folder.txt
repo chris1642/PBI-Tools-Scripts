@@ -1,5 +1,5 @@
 # Define the folder path where the .pbix files are located
-$folderPath = "C:\Path\To\Your\Folder"
+$folderPath = "C:\R"
 
 # Get all .pbix files from the specified folder
 $pbixFiles = Get-ChildItem -Path $folderPath -Filter *.pbix

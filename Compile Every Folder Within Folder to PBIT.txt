@@ -21,3 +21,4 @@ foreach ($folder in $folders) {
         Write-Host "$outputPath compiled successfully"
     }
 }
+ 

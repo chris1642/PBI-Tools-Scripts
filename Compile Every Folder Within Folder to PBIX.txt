@@ -1,5 +1,5 @@
 # Define the parent directory where the folders are located
-$parentDirectory = "C:\PBI Tools Extracts\Reports"
+$parentDirectory = "C:\R"
 
 # Get all directories from the specified parent directory
 $folders = Get-ChildItem -Path $parentDirectory -Directory
